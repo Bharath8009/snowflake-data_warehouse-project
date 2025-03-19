@@ -1,0 +1,27 @@
+use role accountadmin;         --cannot use sys admin as it has no privelieges for compute warehouse
+use warehouse compute_wh;  --Select Warehouse
+
+-- Cricket database and 4 schemas
+create database if not exists cricket;
+create or replace schema cricket.land;
+create or replace schema cricket.raw;
+create or replace schema cricket.clean;
+create or replace schema cricket.consumption; 
+
+show schemas in database cricket;
+
+--Change context
+use schema cricket.land;
+
+--Json file format
+create or replace file format cricket.land.my_json_format
+ type=json
+ null_if=('\\n','null','')  --This option specifies that any occurrence of \n, null, or an empty string should be treated as a SQL NULL value.
+ strip_outer_array=true
+ comment='Json file format with strip outer array flag true';
+
+--creating an Internal stage
+create or replace stage cricket.land.my_stg;
+
+list @cricket.land.my_stg;
+ 
