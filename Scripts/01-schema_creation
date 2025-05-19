@@ -1,4 +1,4 @@
-use role accountadmin;         --cannot use sys admin as it has no privelieges for compute warehouse
+use role sysadmin;         --cannot use sys admin as it has no privelieges for compute warehouse
 use warehouse compute_wh;  --Select Warehouse
 
 -- Cricket database and 4 schemas
