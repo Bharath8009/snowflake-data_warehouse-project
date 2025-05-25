@@ -10,7 +10,7 @@ create or replace schema cricket.consumption;
 
 show schemas in database cricket;
 
-----Changes context
+--Change context
 use schema cricket.land;
 
 --Json file format
